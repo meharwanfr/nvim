@@ -5,13 +5,9 @@ return {
 	},
 	{
 		"romus204/tree-sitter-manager.nvim",
-		dependencies = {}, -- tree-sitter CLI must be installed system-wide
+		dependencies = {},
 		config = function()
-			require("tree-sitter-manager").setup({
-				-- Optional: custom paths
-				-- parser_dir = vim.fn.stdpath("data") .. "/site/parser",
-				-- query_dir = vim.fn.stdpath("data") .. "/site/queries",
-			})
+			require("tree-sitter-manager").setup({})
 		end,
 	},
 	{
@@ -61,19 +57,6 @@ return {
 		"saghen/blink.cmp",
 
 		dependencies = { "rafamadriz/friendly-snippets" },
-
-		-- config = function()
-		-- 	local capabilities = {
-		-- 		textDocument = {
-		-- 			foldingRange = {
-		-- 				dynamicRegistration = false,
-		-- 				lineFoldingOnly = true,
-		-- 			},
-		-- 		},
-		-- 	}
-		--
-		-- 	capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-		-- end,
 
 		version = "1.*",
 
