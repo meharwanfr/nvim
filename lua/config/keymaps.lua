@@ -61,3 +61,4 @@ function RemoveAllComments()
 end
 
 vim.keymap.set("n", "<leader>rc", RemoveAllComments, { desc = "Remove all comments" })
+vim.keymap.set("n", "<leader>tc", "<cmd>SupermavenToggle<CR>", { desc = "Remove all comments" })

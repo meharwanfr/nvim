@@ -24,6 +24,7 @@ return {
 	},
 	{
 		"supermaven-inc/supermaven-nvim",
+		enable = false,
 		config = function()
 			require("supermaven-nvim").setup({
 				keymaps = {

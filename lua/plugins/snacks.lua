@@ -2,27 +2,23 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	---@type snacks.Config
+
 	opts = {
 		bigfile = { enabled = true },
 		git = { enabled = true },
-		-- gh = { enabled = true },
+
 		animate = { enabled = false },
 		dashboard = {
 			width = 60,
-			row = nil, -- dashboard position. nil for center
-			col = nil, -- dashboard position. nil for center
-			pane_gap = 4, -- empty columns between vertical panes
-			autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
-			-- These settings are used by some built-in sections
+			row = nil,
+			col = nil,
+			pane_gap = 4,
+			autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+
 			preset = {
-				-- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
-				---@type fun(cmd:string, opts:table)|nil
+
 				pick = nil,
-				-- Used by the `keys` section to show keymaps.
-				-- Set your custom keymaps here.
-				-- When using a function, the `items` argument are the default keymaps.
-				---@type snacks.dashboard.Item[]
+
 				keys = {
 					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
@@ -54,7 +50,7 @@ return {
 					},
 					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
-				-- Used by the `header` section
+
 				header = [[
  ⠀⡶⠛⠲⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡶⠚⢲⡀ 
 ⣰⠛⠃⠀⢠⣏⠀⠀⠀⠀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣀⡀⠀⠀⠀⣸⡇⠀⠈⠙⣧
@@ -73,7 +69,7 @@ return {
 ⠹⣄⡀⠀⠐⡏⠀⠀⠉⠛⠿⣶⣿⣦⣤⣤⣤⣶⣷⡾⠟⠋⠀⠀⢸⡇⠀⢠⣤⠟
 ⠀⠀⠳⢤⠼⠃⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠘⠷⢤⠾⠁⠀]],
 			},
-			-- item field formatters
+
 			formats = {
 				icon = function(item)
 					if item.file and item.icon == "file" or item.icon == "directory" then
@@ -118,21 +114,19 @@ return {
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
 		styles = {
-			notification = {
-				-- wo = { wrap = true } -- Wrap notifications
-			},
+			notification = {},
 		},
 	},
 	keys = {
 
 		{
-			"<leader>t",
+			"<leader>u",
 			function()
 				Snacks.dashboard()
 			end,
 			desc = "show Snacks dashboard",
 		},
-		-- Top Pickers & Explorer
+
 		{
 			"<C-p>",
 			function()
@@ -175,7 +169,7 @@ return {
 			end,
 			desc = "File Explorer",
 		},
-		-- find
+
 		{
 			"<leader>fb",
 			function()
@@ -218,7 +212,7 @@ return {
 			end,
 			desc = "Recent",
 		},
-		-- git
+
 		{
 			"<leader>gb",
 			function()
@@ -268,7 +262,7 @@ return {
 			end,
 			desc = "Git Log File",
 		},
-		-- gh
+
 		{
 			"<leader>gi",
 			function()
@@ -297,7 +291,7 @@ return {
 			end,
 			desc = "GitHub Pull Requests (all)",
 		},
-		-- Grep
+
 		{
 			"<leader>sb",
 			function()
@@ -327,7 +321,7 @@ return {
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
 		},
-		-- search
+
 		{
 			'<leader>s"',
 			function()
@@ -475,7 +469,7 @@ return {
 			end,
 			desc = "Colorschemes",
 		},
-		-- LSP
+
 		{
 			"gd",
 			function()
@@ -540,7 +534,7 @@ return {
 			end,
 			desc = "LSP Workspace Symbols",
 		},
-		-- Other
+
 		{
 			"<leader>z",
 			function()
@@ -642,59 +636,5 @@ return {
 			desc = "Prev Reference",
 			mode = { "n", "t" },
 		},
-		-- {
-		--   "<leader>N",
-		--   desc = "Neovim News",
-		--   function()
-		--     Snacks.win({
-		--       file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-		--       width = 0.8,
-		--       height = 0.8,
-		--       wo = {
-		--         spell = false,
-		--         wrap = false,
-		--         signcolumn = "yes",
-		--         statuscolumn = " ",
-		--         conceallevel = 3,
-		--       },
-		--     })
-		--   end,
-		-- }
 	},
-	-- init = function()
-	--   vim.api.nvim_create_autocmd("User", {
-	--     pattern = "VeryLazy",
-	--     callback = function()
-	--       -- Setup some globals for debugging (lazy-loaded)
-	--       _G.dd = function(...)
-	--         Snacks.debug.inspect(...)
-	--       end
-	--       _G.bt = function()
-	--         Snacks.debug.backtrace()
-	--       end
-	--
-	--       -- Override print to use snacks for `:=` command
-	--       if vim.fn.has("nvim-0.11") == 1 then
-	--         vim._print = function(_, ...)
-	--           dd(...)
-	--         end
-	--       else
-	--         vim.print = _G.dd
-	--       end
-	--
-	--       -- Create some toggle mappings
-	--       Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-	--       Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-	--       Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
-	--       Snacks.toggle.diagnostics():map("<leader>ud")
-	--       Snacks.toggle.line_number():map("<leader>ul")
-	--       Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
-	--       Snacks.toggle.treesitter():map("<leader>uT")
-	--       Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-	--       Snacks.toggle.inlay_hints():map("<leader>uh")
-	--       Snacks.toggle.indent():map("<leader>ug")
-	--       Snacks.toggle.dim():map("<leader>uD")
-	--     end,
-	--   })
-	-- end,
 }

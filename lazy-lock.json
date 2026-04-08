@@ -9,8 +9,9 @@
   "mini.icons": { "branch": "main", "commit": "7fdae2443a0e2910015ca39ad74b50524ee682d3" },
   "nvim-lspconfig": { "branch": "master", "commit": "bedca8b426b2fee0ccac596d167d71bbe971253f" },
   "rose-pine": { "branch": "main", "commit": "cf2a288696b03d0934da713d66c6d71557b5c997" },
+  "rustaceanvim": { "branch": "main", "commit": "7b8dd7abb9a7f442b356aa03714aefce09610339" },
   "snacks.nvim": { "branch": "main", "commit": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e" },
   "supermaven-nvim": { "branch": "main", "commit": "07d20fce48a5629686aefb0a7cd4b25e33947d50" },
-  "tree-sitter-manager.nvim": { "branch": "main", "commit": "211d1a2408e4346005b2b124fd3068394eea94f0" },
+  "tree-sitter-manager.nvim": { "branch": "main", "commit": "f5d130486e0d4bbce8ccfb8394202eb595246550" },
   "undotree": { "branch": "master", "commit": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d" }
 }
